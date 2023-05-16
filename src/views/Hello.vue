@@ -15,15 +15,15 @@
 
     <!--用户未登录时的登录框-->
     <div class="loginBox" v-if="isLogin">
-      <el-form>
+      <el-form :model="formData">
         <el-form-item>
           <p>Login to your account</p>
         </el-form-item>
         <el-form-item>
-          <el-input placeholder="username"></el-input>
+          <el-input placeholder="username" v-model="formData.username"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input placeholder="password"></el-input>
+          <el-input placeholder="password" v-model="formData.password"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary">登录</el-button>
@@ -42,8 +42,12 @@ export default {
   name: 'Hello',
   data() {
     return {
-      isLogin: true,
-      menuList: null
+      isLogin: false,
+      menuList: null,
+      formData: {
+        username: null,
+        password: null
+      }
     }
   },
   mounted () {
